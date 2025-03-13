@@ -1,15 +1,19 @@
 import { Link } from "react-router-dom";
 import supabase from "../config/supabaseClient";
 
-const smoothieCard = ({ smoothie }) => {
+const smoothieCard = ({ smoothie, onDelete }) => {
   const handleDelete = async () => {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("smoothies")
       .delete()
       .eq("id", smoothie.id);
+
     if (error) {
       console.log(error);
+      return;
     }
+
+    onDelete(smoothie.id);
   };
 
   return (
