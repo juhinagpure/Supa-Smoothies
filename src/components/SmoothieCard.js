@@ -25,7 +25,7 @@ const smoothieCard = ({ smoothie, onDelete }) => {
         <Link to={"/" + smoothie.id}>
           <i className="material-icons">edit</i>
         </Link>
-        <i className="material-icons" onClick={handleDelete}>
+        <i className="material-icons delete" onClick={handleDelete}>
           delete
         </i>
       </div>
