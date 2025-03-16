@@ -17,7 +17,7 @@ const Create = () => {
       return;
     }
 
-    const { data, error } = await supabase
+    const { status, error, ...rest } = await supabase
       .from("smoothies")
       .insert([{ title, method, rating }]);
 
@@ -25,8 +25,7 @@ const Create = () => {
       console.log(error);
       setFormError("All fields are required");
     }
-    if (data) {
-      console.log(data);
+    if (status === 201) {
       setFormError(null);
       navigate("/");
     }
